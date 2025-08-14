@@ -2,14 +2,18 @@
 # (c) José Cobas Rodríguez
 import streamlit as st
 from PIL import Image
+from os.path import dirname, join
 from langchain.chat_models import init_chat_model
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 
-im = Image.open("favicon.png")
+if "im" not in st.session_state:
+    impath = join(dirname(__file__),"favicon.png")
+    st.session_state.im = Image.open(impath)
+
 st.set_page_config(
     page_title="Chatbot EVA",
-    page_icon=im,
+    page_icon=st.session_state.im,
 )
 
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
@@ -56,7 +60,7 @@ st.markdown(
     }}    
     .stAppHeader {{display:none;}}
     .st-emotion-cache-1ghhuty {{
-        background-color: #165c7d!important;
+        background-color: rgb(129,184,193)!important;
     }}
     </style>
     """,
