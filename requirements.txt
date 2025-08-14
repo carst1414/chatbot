@@ -8,3 +8,4 @@ langchain-chroma>=0.1.2
 langchain_text_splitters
 fastembed
 streamlit
+Pillow

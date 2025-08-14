@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 # (c) José Cobas Rodríguez
 import streamlit as st
+from PIL import Image
 from langchain.chat_models import init_chat_model
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
+
+im = Image.open("favicon.png")
+st.set_page_config(
+    page_title="Chatbot EVA",
+    page_icon=im,
+)
 
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 
@@ -46,6 +53,10 @@ st.markdown(
     font-size: xx-large;
     color: #ff6900;
     text-align: center;
+    }}    
+    .stAppHeader {{display:none;}}
+    .st-emotion-cache-1ghhuty {{
+        background-color: #165c7d!important;
     }}
     </style>
     """,
